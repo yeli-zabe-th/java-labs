@@ -1,4 +1,4 @@
-package lab3.model;
+package src.main.java.lab3.model;
 
 public class Human {
 
