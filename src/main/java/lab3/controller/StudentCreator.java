@@ -1,21 +1,30 @@
 package src.main.java.lab3.controller;
 
-import src.main.java.lab3.model.Sex;
+import src.main.java.lab3.model.Human;
 import src.main.java.lab3.model.Student;
 
 public class StudentCreator {
 
 
-    public Student createStudent(String name, String surname, String patronymic, int recordBookNumber,
-                                 Sex sex) {
+    public Student createStudent(Human human, int recordBookNumber) {
+
+
         Student student = new Student();
-        student.setName(name);
-        student.setSurname(surname);
-        student.setPatronymic(patronymic);
+        student.setName(human.getName());
+        student.setSurname(human.getSurname());
+        student.setPatronymic(human.getPatronymic());
+
         student.recordBookNumber(recordBookNumber);
-        student.setSex(sex);
+        student.setSex(human.getSex());
 
         return student;
+    }
+
+    public Student createTypicalStudent() {
+        HumanCreator humanCreator = new HumanCreator();
+        Human typicalHuman = humanCreator.createTypicalHuman();
+        Student typicalStudent = createStudent(typicalHuman, 12345678);
+        return typicalStudent;
     }
 
 }

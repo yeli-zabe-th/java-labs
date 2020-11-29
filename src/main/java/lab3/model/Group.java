@@ -1,44 +1,12 @@
 package src.main.java.lab3.model;
 
-import src.main.java.lab3.Utils;
-import src.main.java.lab3.exceptions.MaxStudentExceed;
-import src.main.java.lab3.model.Student;
-
 import java.util.List;
+import java.util.Objects;
 
-public class Group extends University {
+public class Group  {
 
     private int maxStudentsCount;
     List<Student> students;
-
-    @Override
-    public String toString() {
-        return "Group{" +
-                "name='" + name +
-                ", maxStudentsCount=" + maxStudentsCount +
-                ", head=" + head +
-                ", students=" + Utils.listToString(students, 5) +
-                '}';
-    }
-
-    public List<Student> getStudents() {
-        return this.students;
-    }
-
-    public void setStudents(List<Student> students) throws MaxStudentExceed {
-        if (students.size() > this.maxStudentsCount) {
-            throw new MaxStudentExceed("Max students count was exceeded.");
-        }
-        this.students = students;
-    }
-
-    public void addStudent(Student student) throws MaxStudentExceed {
-        this.students.add(student);
-
-        if (this.students.size() > this.maxStudentsCount) {
-            throw new MaxStudentExceed("Max students count was exceeded.");
-        }
-    }
 
     public int getMaxStudentsCount() {
         return maxStudentsCount;
@@ -46,5 +14,35 @@ public class Group extends University {
 
     public void setMaxStudentsCount(int maxStudentsCount) {
         this.maxStudentsCount = maxStudentsCount;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "maxStudentsCount=" + maxStudentsCount +
+                ", students=" + students.toString() +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Group)) return false;
+        Group group = (Group) o;
+        return maxStudentsCount == group.maxStudentsCount &&
+                students.equals(group.students);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(maxStudentsCount, students);
     }
 }
