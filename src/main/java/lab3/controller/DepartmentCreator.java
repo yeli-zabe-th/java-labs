@@ -6,9 +6,7 @@ import src.main.java.lab3.model.Group;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ominieiev on 25.11.2020.
- */
+
 public class DepartmentCreator {
 
 
