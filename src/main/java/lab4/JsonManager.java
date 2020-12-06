@@ -14,9 +14,9 @@ public class JsonManager {
             FileWriter myWriter = new FileWriter(filePath);
             myWriter.write(json);
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
+            System.out.println("Successfully written to the file");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("Error");
             e.printStackTrace();
         }
     }
@@ -26,6 +26,7 @@ public class JsonManager {
         try {
             return gson.fromJson(new FileReader(filePath), University.class);
         } catch (FileNotFoundException e) {
+            System.out.println("Error");
             e.printStackTrace();
         }
         return null;
